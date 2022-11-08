@@ -23,7 +23,6 @@ class UserController extends Controller
     }
 
     public function login(Request $req){
-        // How to know if the user has already logged in! to avoid create another hash!!!!!!!
         $user = User::where('user_name', $req->user_name)->first();
 
         if (!$user) {
