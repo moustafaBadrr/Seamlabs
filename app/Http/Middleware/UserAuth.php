@@ -17,7 +17,7 @@ class UserAuth
     public function handle(Request $request, Closure $next)
     {
         if (!$request->expectsJson()) {
-            return route('user_login');
+            return route('login');
         }
 
         return $next($request);

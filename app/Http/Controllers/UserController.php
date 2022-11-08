@@ -66,14 +66,14 @@ class UserController extends Controller
         if(!$user){
             return response()->json(["Message", "This User Does not Exists"]);
         }
-
-       $user->update([
-            'user_name' => $req->user_name,
-            'email' => $req->email,
-            'date_of_birth' => Carbon::create($req->date_of_birth),
-            'phone_number' => $req->phone_number,
-            'password' => Hash::make($req->password),
-            'updated_at' => Carbon::now()
+        // Validation
+        $user->update([
+                'user_name' => $req->user_name,
+                'email' => $req->email,
+                'date_of_birth' => Carbon::create($req->date_of_birth),
+                'phone_number' => $req->phone_number,
+                'password' => Hash::make($req->password),
+                'updated_at' => Carbon::now()
         ]);
 
         return response()->json(["Message", "User Updated Successfully"]);

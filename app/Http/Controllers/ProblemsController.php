@@ -6,23 +6,17 @@ use Illuminate\Http\Request;
 
 class ProblemsController extends Controller
 {
-    /*  Like Excel Sheet the function will take a string like Excel Column Title such as AA, BA, AAA
-        the function will return the index of this string A -> 1, AA -> 27 and so on */
+    /* The function takes Time Complexity O(n) which n will be size of string && O(1) Space*/
     public function indexOfColumnTitle(string $input_string){
         $res = 0;
         $len = strlen($input_string);
 
-        /*  We getting the char position we have 26 char from A to Z
-            so if we move from A to Z We have to move 26 times and from AA to BA Z7 timeS plus the A - Z Movements
-            which will equal to 26 + 26 + 1 From A - Z 26 + AA - AZ 26  + AZ - BA 1
-        */
         for($i = 0; $i < $len; $i++)
             $res += (ord($input_string[$i]) - 64) * pow(26, $len - $i - 1);
 
         return $res;
     }
 
-    //the function will return count of numbers between the start number and end number doesn't has 5 in it
     /* public function numbersWithoutFive(int $start,int $end){
         $step = 1;
         $counter = 0; // the number of numbers haven't 5
@@ -47,35 +41,33 @@ class ProblemsController extends Controller
         return response()->json(["Number of numbers which doesn't have 5" => $counter]);
     }*/
 
+    // The function takes Time Complexity O(n) which n will be the range between start and end && and O(1) Space
     public function numbersWithoutFive($start, $end){
-        $counter = 0; // the number of numbers haven't 5
+        $counter = 0;
 
         for($start; $start <= $end; $start++){
             if(!preg_match("[5]", $start))
                 $counter++;
         }
-        return response()->json(["Number of numbers which doesn't have 5" => $counter]);
+
+        return response()->json(["Number of numbers which doesn't have 5 " => $counter]);
     }
-    
-    function numOfStepsToZero($num) {
-        $count=0;
-        while ($num > 0) {
-            if($num%2==0)   $num = $num/2;
-            else    $num--;
-            $count++;
-        }
-        return $count;
+
+    function DownToZero($num) {
+        if($num <= 3)
+            return $num;
+        if($num == 4)
+            return 3;
+
     }
-    /*  Take an array has some numbers and will return an array with the same original array size
-        each index will be the minimum steps to covvert the original number to zero */
+
     public function minimumStepsToZero(Request $req){
         $numbers = explode(",", $req->numbers);
-
         $res = array();
         $len = count($numbers);
 
         for($i = 0; $i< $len; $i++){
-            array_push($res, $this->numOfStepsToZero((int)$numbers[$i]));
+            array_push($res,$this->DownToZero((int)$numbers[$i]));
         }
 
         return response()->json($res);
