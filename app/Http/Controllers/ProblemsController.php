@@ -23,11 +23,11 @@ class ProblemsController extends Controller
     }
 
     //the function will return count of numbers between the start number and end number doesn't has 5 in it
-    public function numbersWithoutFive(int $start,int $end){
+    /* public function numbersWithoutFive(int $start,int $end){
         $step = 1;
         $counter = 0; // the number of numbers haven't 5
         $skip = 10; /* this will skip number starting with 5 and not only 5
-                        like for example from -59 to -49, -599 to -499, 50 to 59, 500 to 599 */
+                        like for example from -59 to -49, -599 to -499, 50 to 59, 500 to 599 *//*
         for($start; $start <= $end; $start += $step){
             if(preg_match("[5]", $start)){
                 $step = 5;
@@ -45,8 +45,18 @@ class ProblemsController extends Controller
         $counter = $counter > 0 ? $counter: 0;
 
         return response()->json(["Number of numbers which doesn't have 5" => $counter]);
-    }
+    }*/
 
+    public function numbersWithoutFive($start, $end){
+        $counter = 0; // the number of numbers haven't 5
+
+        for($start; $start <= $end; $start++){
+            if(!preg_match("[5]", $start))
+                $counter++;
+        }
+        return response()->json(["Number of numbers which doesn't have 5" => $counter]);
+    }
+    
     function numOfStepsToZero($num) {
         $count=0;
         while ($num > 0) {
