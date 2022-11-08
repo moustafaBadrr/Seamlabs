@@ -16,10 +16,11 @@ This is a Laravel task provided from Seamlabs company
 
 # To Run the APIs 
 ### 1 - Create DB 
-### 2 - Put the BD Name in env file
-### 3 - Run the Server ==> php artisan serv
-### 4 - Migrate the DB ==> php artisan migrate
-### 5 - Called the APIs
-#### 5.1 - Register
-#### 5.2 - Login
-#### 5.3 - Call any other API
+### 2 - add .env file
+### 3 - Put the BD Name and APP_KEY in env file
+### 4 - Migrate the DB ==> php artisan migrate 
+### 5 - Run the Server ==> php artisan serv
+### 6 - Called the APIs
+#### 6.1 - Register
+#### 6.2 - Login
+#### 6.3 - Call any other API
