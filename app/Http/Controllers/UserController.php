@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function create(Request $req){
+    public function register(Request $req){
         User::insert([
             'user_name' => $req->user_name,
             'email' => $req->email,
@@ -35,7 +35,7 @@ class UserController extends Controller
                     'token' => $token
                 ], 200);
             } else {
-                return response()->json(['message' => "User Name or Password is Invalid"], 404);
+                return response()->json(['Message' => "User Name or Password is Invalid"], 404);
             }
         }
     }
