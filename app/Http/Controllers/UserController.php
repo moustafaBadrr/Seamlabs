@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function register(Request $req){
+        $duplicate = User::where("user_name", $req->user_name)
+                        ->orwhere("phone_number", $req->phone_number)
+                        ->orwhere("email", $req->email)
+                        ->first();
+
+        if($duplicate)
+            return response()->json(["Message", "There is a user has these Data"]);
+
         User::insert([
             'user_name' => $req->user_name,
             'email' => $req->email,
@@ -66,6 +74,15 @@ class UserController extends Controller
         if(!$user){
             return response()->json(["Message", "This User Does not Exists"]);
         }
+
+        $duplicate = User::where("user_name", $req->user_name)
+                            ->orwhere("phone_number", $req->phone_number)
+                            ->orwhere("email", $req->email)
+                            ->first();
+
+        if($duplicate)
+            return response()->json(["Message", "There is a user has these Data"]);
+
         // Validation
         $user->update([
                 'user_name' => $req->user_name,
