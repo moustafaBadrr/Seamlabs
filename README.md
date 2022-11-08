@@ -2,15 +2,15 @@
 This is a Laravel task provided from Seamlabs company 
 
 # Tools
-## Vscode
-## Postman
+### 1 - Vscode
+### 2 - Postman
 
 # Technologies
-## Laravel 9
-## MySQL
-## PHP 8
-## Sanctum Authentication Package
+### 1 - Laravel 9
+### 2 - MySQL
+### 3 - PHP 8
+### 4 - Sanctum Authentication Package
 
 # Version Cotrol 
-## Git
+### 1 - Git
 
