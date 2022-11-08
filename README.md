@@ -9,7 +9,8 @@ This is a Laravel task provided from Seamlabs company
 ### 1 - Laravel 9
 ### 2 - MySQL
 ### 3 - PHP 8
-### 4 - Sanctum Authentication Package
+### 4 - Sanctum Authentication Package 
+### (install the package it doesn't exist from https://www.itsolutionstuff.com/post/laravel-9-rest-api-authentication-using-sanctum-tutorialexample.html)
 
 # Version Cotrol 
 ### 1 - Git
